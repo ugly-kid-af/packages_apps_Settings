@@ -24,4 +24,10 @@
     <string name="maintainer_name_default">Unknown</string>
     <string name="keywords_maintainer_name">Maintainer Name</string>
 
+    <!-- SELinux Status -->
+    <string name="selinux_status">SELinux status</string>
+    <string name="selinux_status_disabled">Disabled</string>
+    <string name="selinux_status_permissive">Permissive</string>
+    <string name="selinux_status_enforcing">Enforcing</string>
+
 </resources>
