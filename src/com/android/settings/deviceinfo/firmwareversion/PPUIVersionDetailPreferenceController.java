@@ -37,6 +37,7 @@ import com.android.settingslib.RestrictedLockUtilsInternal;
 
 public class PPUIVersionDetailPreferenceController extends BasePreferenceController {
 
+    private static final Uri INTENT_URI_DATA = Uri.parse("https://t.me/ppuichat");
     private static final String TAG = "PPUIVersionDialogCtrl";
     private static final int DELAY_TIMER_MILLIS = 500;
     private static final int ACTIVITY_TRIGGER_COUNT = 3;
