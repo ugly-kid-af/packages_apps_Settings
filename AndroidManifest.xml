@@ -3302,7 +3302,7 @@
                 android:value="com.android.settings.category.ia.homepage" />
             <meta-data android:name="com.android.settings.order" android:value="-105"/>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.exui.config.center.ConfigCenter" />
+                android:value="com.ppui.config.center.ConfigCenter" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
             <meta-data android:name="com.android.settings.summary"
