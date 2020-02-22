@@ -42,14 +42,14 @@
                 android:persistent="false" />
 
         <!-- Outdoor mode / SRE -->
-        <com.evolution.settings.preference.SystemSettingSwitchPreference
+        <com.ppui.config.center.preferences.SystemSettingSwitchPreference
                 android:key="display_auto_outdoor_mode"
                 android:title="@string/live_display_outdoor_mode_title"
                 android:summary="@string/live_display_outdoor_mode_summary"
                 android:defaultValue="@*android:bool/config_defaultAutoOutdoorMode" />
 
         <!-- Reading mode -->
-        <com.evolution.settings.preference.SystemSettingSwitchPreference
+        <com.ppui.config.center.preferences.SystemSettingSwitchPreference
                 android:key="display_reading_mode"
                 android:title="@string/live_display_reading_mode_title"
                 android:summary="@string/live_display_reading_mode_summary"
@@ -79,14 +79,14 @@
                 android:persistent="false"/>
 
         <!-- Adaptive backlight -->
-        <com.evolution.settings.preference.SystemSettingSwitchPreference
+        <com.ppui.config.center.preferences.SystemSettingSwitchPreference
                 android:key="display_low_power"
                 android:title="@string/live_display_low_power_title"
                 android:summary="@string/live_display_low_power_summary"
                 android:defaultValue="@*android:bool/config_defaultCABC" />
 
         <!-- Color enhancement -->
-        <com.evolution.settings.preference.SystemSettingSwitchPreference
+        <com.ppui.config.center.preferences.SystemSettingSwitchPreference
                 android:key="display_color_enhance"
                 android:title="@string/live_display_enhance_color_title"
                 android:summary="@string/live_display_enhance_color_summary"
