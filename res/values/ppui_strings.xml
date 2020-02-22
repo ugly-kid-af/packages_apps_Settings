@@ -16,7 +16,6 @@
     <string name="build_date">"Build Time"</string>
 
     <!-- LiveDisplay -->
-    <string name="live_display_title">LiveDisplay</string>
     <string name="live_display_summary">Optimize your screen based on time of day and ambient conditions to improve readability and reduce eyestrain</string>
     <string name="live_display_mode">Display mode</string>
     <string name="live_display_color_temperature_title">Color temperature</string>
