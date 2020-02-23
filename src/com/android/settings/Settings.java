@@ -180,7 +180,4 @@ public class Settings extends SettingsActivity {
     // Config Center
     public static class ConfigCenterActivity extends SettingsActivity { /* empty */ }
 
-    // LiveDisplay
-    public static class LiveDisplaySettingsActivity extends SettingsActivity { /* empty */ }
-
 }
