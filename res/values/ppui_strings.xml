@@ -19,4 +19,9 @@
     <string name="swipe_to_screenshot_title">Swipe to screenshot</string>
     <string name="swipe_to_screenshot_summary">Swipe 3 fingers down the screen to take a screenshot</string>
 
+    <!-- About Phone screen, Maintainer Name -->
+    <string name="maintainer_name">Maintainer</string>
+    <string name="maintainer_name_default">Unknown</string>
+    <string name="keywords_maintainer_name">Maintainer Name</string>
+
 </resources>
