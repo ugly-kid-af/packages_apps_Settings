@@ -78,12 +78,6 @@ public class SettingsContextualCardProvider extends ContextualCardProvider {
                         .setCardName(CustomSliceRegistry.FACE_ENROLL_SLICE_URI.toString())
                         .setCardCategory(ContextualCard.Category.DEFAULT)
                         .build();
-        final ContextualCard darkThemeCard =
-                ContextualCard.newBuilder()
-                        .setSliceUri(CustomSliceRegistry.DARK_THEME_SLICE_URI.toString())
-                        .setCardName(CustomSliceRegistry.DARK_THEME_SLICE_URI.toString())
-                        .setCardCategory(ContextualCard.Category.IMPORTANT)
-                        .build();
         final ContextualCardList cards = ContextualCardList.newBuilder()
                 .addCard(wifiCard)
                 .addCard(connectedDeviceCard)
@@ -92,7 +86,6 @@ public class SettingsContextualCardProvider extends ContextualCardProvider {
                 .addCard(notificationChannelCard)
                 .addCard(contextualAdaptiveSleepCard)
                 .addCard(contextualFaceSettingsCard)
-                .addCard(darkThemeCard)
                 .build();
 
         return cards;

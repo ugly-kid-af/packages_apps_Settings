@@ -117,13 +117,6 @@ public class BatteryMeterView extends ImageView {
                     .getDimensionPixelSize(R.dimen.battery_meter_height);
         }
 
-        public BatteryMeterDrawable(Context context, int frameColor, int width, int height) {
-            super(context, frameColor);
-
-            mIntrinsicWidth = width;
-            mIntrinsicHeight = height;
-        }
-
         @Override
         public int getIntrinsicWidth() {
             return mIntrinsicWidth;

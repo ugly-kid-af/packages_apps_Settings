@@ -37,11 +37,12 @@ import com.android.settings.homepage.contextualcards.logging.ContextualCardLogUt
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import com.android.settingslib.utils.AsyncLoaderCompat;
-import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -55,6 +56,7 @@ public class ContextualCardLoader extends AsyncLoaderCompat<List<ContextualCard>
     private static final String TAG = "ContextualCardLoader";
     private static final long ELIGIBILITY_CHECKER_TIMEOUT_MS = 250;
 
+    private final ExecutorService mExecutorService;
     private final ContentObserver mObserver = new ContentObserver(
             new Handler(Looper.getMainLooper())) {
         @Override
@@ -74,6 +76,7 @@ public class ContextualCardLoader extends AsyncLoaderCompat<List<ContextualCard>
     ContextualCardLoader(Context context) {
         super(context);
         mContext = context.getApplicationContext();
+        mExecutorService = Executors.newCachedThreadPool();
     }
 
     @Override
@@ -160,8 +163,8 @@ public class ContextualCardLoader extends AsyncLoaderCompat<List<ContextualCard>
         final List<Future<ContextualCard>> eligibleCards = new ArrayList<>();
 
         for (ContextualCard card : candidates) {
-            final EligibleCardChecker checker = new EligibleCardChecker(mContext, card);
-            eligibleCards.add(ThreadUtils.postOnBackgroundThread(checker));
+            final EligibleCardChecker future = new EligibleCardChecker(mContext, card);
+            eligibleCards.add(mExecutorService.submit(future));
         }
         // Collect future and eligible cards
         for (Future<ContextualCard> cardFuture : eligibleCards) {

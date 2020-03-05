@@ -20,6 +20,8 @@ import static android.app.NotificationManager.IMPORTANCE_LOW;
 import static android.app.NotificationManager.IMPORTANCE_NONE;
 import static android.app.slice.Slice.EXTRA_TOGGLE_STATE;
 
+import static com.android.settings.notification.ChannelListPreferenceController.ARG_FROM_SETTINGS;
+
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationChannelGroup;
@@ -60,12 +62,13 @@ import com.android.settings.slices.SliceBuilderUtils;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtilsInternal;
 import com.android.settingslib.applications.ApplicationsState;
-import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -132,6 +135,7 @@ public class NotificationChannelSlice implements CustomSliceable {
             };
 
     protected final Context mContext;
+    private final ExecutorService mExecutorService;
     @VisibleForTesting
     NotificationBackend mNotificationBackend;
     private NotificationBackend.AppRow mAppRow;
@@ -141,6 +145,7 @@ public class NotificationChannelSlice implements CustomSliceable {
     public NotificationChannelSlice(Context context) {
         mContext = context;
         mNotificationBackend = new NotificationBackend();
+        mExecutorService = Executors.newCachedThreadPool();
     }
 
     @Override
@@ -371,9 +376,9 @@ public class NotificationChannelSlice implements CustomSliceable {
         // Create tasks to get notification data for multi-channel packages.
         final List<Future<NotificationBackend.AppRow>> appRowTasks = new ArrayList<>();
         for (PackageInfo packageInfo : packageInfoList) {
-            final NotificationMultiChannelAppRow appRow = new NotificationMultiChannelAppRow(
+            final NotificationMultiChannelAppRow future = new NotificationMultiChannelAppRow(
                     mContext, mNotificationBackend, packageInfo);
-            appRowTasks.add(ThreadUtils.postOnBackgroundThread(appRow));
+            appRowTasks.add(mExecutorService.submit(future));
         }
 
         // Get the package which has sent at least ~10 notifications and not turn off channels.

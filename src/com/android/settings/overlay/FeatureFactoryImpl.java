@@ -30,8 +30,6 @@ import com.android.settings.applications.ApplicationFeatureProvider;
 import com.android.settings.applications.ApplicationFeatureProviderImpl;
 import com.android.settings.aware.AwareFeatureProvider;
 import com.android.settings.aware.AwareFeatureProviderImpl;
-import com.android.settings.biometrics.face.FaceFeatureProvider;
-import com.android.settings.biometrics.face.FaceFeatureProviderImpl;
 import com.android.settings.bluetooth.BluetoothFeatureProvider;
 import com.android.settings.bluetooth.BluetoothFeatureProviderImpl;
 import com.android.settings.connecteddevice.dock.DockUpdaterFeatureProviderImpl;
@@ -86,7 +84,6 @@ public class FeatureFactoryImpl extends FeatureFactory {
     private ContextualCardFeatureProvider mContextualCardFeatureProvider;
     private BluetoothFeatureProvider mBluetoothFeatureProvider;
     private AwareFeatureProvider mAwareFeatureProvider;
-    private FaceFeatureProvider mFaceFeatureProvider;
 
     @Override
     public SupportFeatureProvider getSupportFeatureProvider(Context context) {
@@ -257,13 +254,5 @@ public class FeatureFactoryImpl extends FeatureFactory {
             mAwareFeatureProvider = new AwareFeatureProviderImpl();
         }
         return mAwareFeatureProvider;
-    }
-
-    @Override
-    public FaceFeatureProvider getFaceFeatureProvider() {
-        if (mFaceFeatureProvider == null) {
-            mFaceFeatureProvider = new FaceFeatureProviderImpl();
-        }
-        return mFaceFeatureProvider;
     }
 }
