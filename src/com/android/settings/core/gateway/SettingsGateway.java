@@ -285,8 +285,8 @@ public class SettingsGateway {
             BatterySaverScheduleSettings.class.getName(),
             MobileNetworkListFragment.class.getName(),
             GlobalActionsPanelSettings.class.getName(),
-            ConfigCenter.class.getName()
-            DarkModeSettingsFragment.class.getName()
+            ConfigCenter.class.getName(),
+            DarkModeSettingsFragment.class.getName(),
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
